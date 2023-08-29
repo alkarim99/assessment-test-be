@@ -45,6 +45,21 @@ const get = async (page = 1) => {
   }
 }
 
+async function create(candidate) {
+  const result = await db.query(
+    `INSERT INTO t_candidate (email, phone_number, full_name, dob, pob, gender, year_exp, last_salary) VALUES ('${candidate.email}', '${candidate.phone_number}', '${candidate.full_name}', '${candidate.dob}', '${candidate.pob}', '${candidate.gender}', '${candidate.year_exp}', '${candidate.last_salary}');`
+  )
+
+  let message = "Error in creating candidate"
+
+  if (result.affectedRows) {
+    message = "Candidate created successfully"
+  }
+
+  return { message }
+}
+
 module.exports = {
   get,
+  create,
 }

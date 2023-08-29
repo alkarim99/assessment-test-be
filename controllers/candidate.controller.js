@@ -11,6 +11,17 @@ const get = async (req, res) => {
   }
 }
 
+const create = async (req, res) => {
+  try {
+    const query = await model.create(req.body)
+    res.json(query)
+    console.log(query)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   get,
+  create,
 }
