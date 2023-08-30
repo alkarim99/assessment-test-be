@@ -16,8 +16,9 @@ This Back-End uses a number of open source projects to work properly:
 - [Express](https://expressjs.com/) - fast node.js network app framework
 - [MySQL](https://www.mysql.com/) - the powerfull database
 
-<!-- [Postman Documentation](https://documenter.getpostman.com/view/20247883/2s9XxzuYUo) <br> -->
-<!-- [Deploy Backend](https://vast-mite-smock.cyclic.app/) <br> -->
+[Postman Documentation](https://documenter.getpostman.com/view/20247883/2s9Y5Zwhq4) <br>
+[Deploy Backend](https://muddy-cape-moth.cyclic.app/) <br>
+
 <!-- [Deploy Frontend](https://food-recipe-fe-react.vercel.app/) <br> -->
 <!-- [Frontend Repository](https://github.com/alkarim99/food-recipe-fe-react) <br> -->
 
