@@ -3,6 +3,7 @@ require("dotenv").config()
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const cors = require("cors")
 
 const candidateRoutes = require("./routes/candidate.routes")
 
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use(candidateRoutes)
 
