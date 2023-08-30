@@ -3,6 +3,8 @@ require("dotenv").config()
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
+const helmet = require("helmet")
+const xss = require("xss-clean")
 const cors = require("cors")
 
 const candidateRoutes = require("./routes/candidate.routes")
@@ -14,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+app.use(helmet())
+app.use(xss())
 app.use(cors())
 
 app.use(candidateRoutes)
