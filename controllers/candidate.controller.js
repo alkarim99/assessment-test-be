@@ -205,7 +205,7 @@ const update = async (req, res) => {
     }
     const isEmailUnique = await emailValidation.isEmailUnique(
       payload.email,
-      checkData[0].id
+      checkData[0].candidate_id
     )
     if (isEmailUnique) {
       res.status(400).json({
@@ -223,7 +223,7 @@ const update = async (req, res) => {
     }
     const isPhoneNumberUnique = await phoneNumberValidation.isPhoneNumberUnique(
       payload.phone_number,
-      checkData[0].id
+      checkData[0].candidate_id
     )
     if (isPhoneNumberUnique) {
       res.status(400).json({
