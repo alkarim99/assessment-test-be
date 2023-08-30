@@ -5,7 +5,7 @@ const isPhoneNumberUnique = async (number, id) => {
     let phone_numbers
     if (id) {
       phone_numbers = await db.query(
-        `SELECT phone_number FROM t_candidate WHERE id != ${id}`
+        `SELECT phone_number FROM t_candidate WHERE candidate_id != ${id}`
       )
     } else {
       phone_numbers = await db.query(`SELECT phone_number FROM t_candidate`)

@@ -13,7 +13,9 @@ const isEmailUnique = async (email, id) => {
   try {
     let emails
     if (id) {
-      emails = await db.query(`SELECT email FROM t_candidate WHERE id != ${id}`)
+      emails = await db.query(
+        `SELECT email FROM t_candidate WHERE candidate_id != ${id}`
+      )
     } else {
       emails = await db.query(`SELECT email FROM t_candidate`)
     }
