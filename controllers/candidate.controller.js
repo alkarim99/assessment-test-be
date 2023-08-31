@@ -4,7 +4,7 @@ const model = require("../models/candidate.models")
 
 const get = async (req, res) => {
   try {
-    const page = req.query.page
+    const { page, filter } = req.query
     if (page && isNaN(page)) {
       res.status(400).json({
         status: false,
@@ -13,7 +13,8 @@ const get = async (req, res) => {
       return
     }
     const { total_data, total_page, current_page, results } = await model.get(
-      page
+      page,
+      filter.toLowerCase()
     )
     res.json({
       status: true,

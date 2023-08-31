@@ -2,15 +2,30 @@ const db = require("../database")
 const helper = require("../helper")
 const config = require("../config")
 
-const get = async (page = 1) => {
+const get = async (page = 1, filter = null) => {
   try {
-    const offset = helper.getOffset(page, config.listPerPage)
-    const results = await db.query(
-      `SELECT * FROM t_candidate LIMIT ${offset},${config.listPerPage}`
-    )
     const all = await db.query(`SELECT * FROM t_candidate`)
     const total_data = all.length
+    const offset = helper.getOffset(page, config.listPerPage)
     const total_page = Math.ceil(total_data / config.listPerPage)
+    let results
+    if (filter == null) {
+      results = await db.query(
+        `SELECT * FROM t_candidate LIMIT ${offset},${config.listPerPage}`
+      )
+    } else if (filter == "junior") {
+      results = await db.query(
+        `SELECT * FROM t_candidate WHERE year_exp >= 1 AND year_exp <= 3 ORDER BY year_exp ASC LIMIT ${offset},${config.listPerPage}`
+      )
+    } else if (filter == "mid") {
+      results = await db.query(
+        `SELECT * FROM t_candidate WHERE year_exp >= 3 AND year_exp <= 5 ORDER BY year_exp ASC LIMIT ${offset},${config.listPerPage}`
+      )
+    } else {
+      results = await db.query(
+        `SELECT * FROM t_candidate WHERE year_exp >= 5 LIMIT ${offset},${config.listPerPage}`
+      )
+    }
     return { total_data, total_page, current_page: page, results }
   } catch (error) {
     return error
