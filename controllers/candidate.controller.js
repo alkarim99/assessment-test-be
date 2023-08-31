@@ -14,7 +14,7 @@ const get = async (req, res) => {
     }
     const { total_data, total_page, current_page, results } = await model.get(
       page,
-      filter.toLowerCase()
+      filter?.toLowerCase()
     )
     res.json({
       status: true,
